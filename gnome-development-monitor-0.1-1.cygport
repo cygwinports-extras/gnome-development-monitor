@@ -1,0 +1,22 @@
+HOMEPAGE="http://github.com/nzjrs/gnome-development-monitor"
+GIT_URI="git://github.com/nzjrs/gnome-development-monitor.git"
+GIT_TAG=${PV}
+inherit git
+
+src_compile() { :; }
+
+src_install() {
+	cd ${S}
+	newbin gnome.py ${PN}
+	sed -i -e "s|\(^DATADIR =\).*|\1 os.path.join('/usr', 'share', '${PN}')|" \
+		${D}/usr/bin/${PN}
+
+	insinto /usr/share/${PN}
+	doins *.ui *.tmpl
+
+	insinto /usr/share/${PN}/inc
+	doins inc/*
+
+	newicon gnome.svg ${PN}.svg
+	make_desktop_entry ${PN} "GNOME Development Monitor" ${PN} "Development;GNOME;GTK"
+}

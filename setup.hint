@@ -1,0 +1,6 @@
+category: Devel Gnome
+requires: python python-dateutil python-gobject2.0 python-gtk2.0 python-htmltmpl python-pygooglechart python-webkit
+sdesc: "GUI tool for tracking GNOME project development"
+ldesc: "GNOME Development Monitor is a simple graphical tool to follow 
+the the development activity of projects hosted on the GNOME 
+infrastructure."
